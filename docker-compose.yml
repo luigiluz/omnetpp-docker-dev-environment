@@ -1,0 +1,18 @@
+services:
+  omnet:
+    build:
+      context: .
+    container_name: omnetpp_dev
+    environment:
+      - DISPLAY=${DISPLAY}
+      - FONTCONFIG_PATH=/etc/fonts
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./workspace:/workspace
+    command: tail -f /dev/null
+    networks:
+      - omnetpp_network
+
+networks:
+  omnetpp_network:
+    driver: bridge
